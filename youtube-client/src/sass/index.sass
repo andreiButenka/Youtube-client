@@ -1,0 +1,329 @@
+@import './colors'
+
+*
+  margin: 0
+  font-size: 16px
+  font-weight: 400
+  font-family: 'Roboto', sans-serif;
+
+body
+  overflow-x: hidden
+  background: $bg-color
+.main
+  height: 100vh
+.container
+  text-align: center
+  width: 100%
+  overflow: hidden
+.form-wrapper
+  position: relative
+  padding: 40px 0
+  width: 100%
+  height: 50%
+  text-align: center
+  background-color: $theme-color
+  transition: all 0.5s
+  -webkit-box-shadow: -1px 2px 5px 2px rgba(166,166,166,1)
+  -moz-box-shadow: -1px 2px 5px 2px rgba(166,166,166,1)
+  box-shadow: -1px 2px 5px 2px rgba(166,166,166,1)
+  z-index: 2
+.logo
+  margin-bottom: 100px
+  font-size: 47px
+  font-weight: 700
+  color: $UIelements-color
+  transition: all 0.5s
+  z-index: 2
+  span
+    font-size: 70px
+.form
+  display: flex
+  justify-content: center
+  -ms-align-items: center
+  align-items: center
+  width: 50%
+  transform: translateX(50%)
+  border-radius: 20px
+  background-color: $UIelements-color
+  transition: all 0.5s
+  .keyword
+    display: -webkit-flex
+    display: -moz-flex
+    display: -ms-flex
+    display: -o-flex
+    display: flex
+    padding: 5px 20px
+    width: 100%
+    color: $text-color
+    outline: none
+    border: none
+    background: none
+    text-decoration: none
+    -webkit-appearance: none
+  &:focus
+    background: $UIelements-color
+    border: none
+  .search-button
+    position: absolute
+    right: 5px
+    background: none
+    border: none
+    -webkit-tap-highlight-color: transparent
+    .search-icon
+      color: $text-color
+      &:hover
+        color: $UIelements-hover-color
+.no-matches
+  position: absolute
+  bottom: -80px
+  left: 50%
+  display: none
+  transform: translateX(-50%)
+.info-cards
+  position: relative
+  --number-of-cards: 1
+  display: none
+  align-items: center
+  margin-bottom: 5vh
+  width: 100%
+  width: calc(var(--number-of-cards)*100% / 4)
+  max-height: 100vh
+  transform: translate(calc(var(--translation, 0px) + var(--index, 0)/var(--number-of-cards)*-400%))
+  z-index: 0
+  .info-card
+    overflow: hidden
+    border-radius: 20px
+    min-height: 350px
+    text-align: center
+    width: 100%
+    width: calc(100%/var(--number-of-cards))
+    user-select: none
+    margin-right: 5vw
+    margin-left: 5vw
+    color: $text-color
+    background-color: $UIelements-color
+    -webkit-box-shadow: -1px 2px 5px 2px rgba(166,166,166,1)
+    -moz-box-shadow: -1px 2px 5px 2px rgba(166,166,166,1)
+    box-shadow: -1px 2px 5px 2px rgba(166,166,166,1)
+    cursor: grab
+    &:active
+      cursor: grabbing
+    &__img-wrap
+      overflow: hidden
+      height: 44%
+      border-top-left-radius: 20px
+      border-top-right-radius: 20px
+      .info-card__img
+        width: 100%
+    &__ref
+      display: flex
+      justify-content: center
+      -ms-align-items: center
+      align-items: center
+      margin-bottom: 5px
+      min-height: 64px
+      color: $UIelements-color
+      background-color: $card-color
+      text-transform: uppercase
+      text-decoration: none
+      pointer-events: auto
+      transition: background-color 0.3s
+      &:hover
+         background-color: lighten($card-color, 10%)
+    &__author,
+    &__date,
+    &__desc,
+    &__view
+      margin-bottom: 5px
+      padding: 0 10px
+      text-align: left
+    &__desc
+      font-size: 12px
+.controls
+  position: relative
+  display: none
+  justify-content: center
+  text-align: center
+  height: 35px
+  z-index: 2
+  .button:last-child
+    margin-right: 0
+  .page-number
+    display: none
+    width: 30px
+    height: 30px
+    border-radius: 50%
+    background-color: red
+    color: $UIelements-color
+  .beginning
+    position: relative
+    display: none
+    -webkit-tap-highlight-color: transparent
+    &:focus
+      outline: none
+    &:active::after
+      display: -webkit-flex
+      display: -moz-flex
+      display: -ms-flex
+      display: -o-flex
+      display: flex
+    &:active::before
+      display: block
+    &::after
+      content: "\f100"
+      position: absolute
+      display: none
+      justify-content: center
+      align-items: center
+      top: -36px
+      left: -5px
+      width: 25px
+      height: 25px
+      border: 1px solid $UIelements-color
+      border-radius: 10px
+      font-size: 16px
+      font-family: 'Font Awesome 5 Free';
+      color: lighten($text-color, 15%)
+      background-color: $UIelements-color
+      transition: all 0.5s
+      z-index: 2
+    &::before
+      content: ""
+      position: absolute
+      display: none
+      left: -3px
+      top: -108%
+      width: 0
+      height: 0
+      font-size: 13px
+      border-right: 12px solid transparent
+      border-top: 15px solid $UIelements-color
+      border-left: 12px solid transparent
+      transition: all 0.5s
+      z-index: 1
+  .prev
+    position: relative
+    display: none
+    color: $UIelements-color
+    -webkit-tap-highlight-color: transparent
+    &:focus
+      outline: none
+    &:active .prev-tip
+      display: -webkit-flex
+      display: -moz-flex
+      display: -ms-flex
+      display: -o-flex
+      display: flex
+    &:hover .prev-tip::before
+      display: block
+    &-tip
+      position: absolute
+      display: none
+      justify-content: center
+      align-items: center
+      top: -36px
+      left: -5px
+      width: 25px
+      height: 25px
+      border: 1px solid $UIelements-color
+      border-radius: 10px
+      font-size: 16px
+      color: lighten($text-color, 15%)
+      background-color: $UIelements-color
+      transition: all 0.5s
+      &::before
+        content: ""
+        position: absolute
+        display: none
+        left: 0px
+        top: 68%
+        width: 0
+        height: 0
+        border-right: 12px solid transparent
+        border-top: 15px solid $UIelements-color
+        border-left: 12px solid transparent
+        transition: all 0.5s
+        z-index: -1
+  .current
+    border: 1px solid $card-color
+    color: $UIelements-color
+    background-color: $card-color
+    pointer-events: none
+    -webkit-tap-highlight-color: transparent
+    &:focus
+      outline: none
+  .next
+    position: relative
+    color: $UIelements-color
+    -webkit-tap-highlight-color: transparent
+    &:focus
+      outline: none
+    &:active .next-tip
+      display: -webkit-flex
+      display: -moz-flex
+      display: -ms-flex
+      display: -o-flex
+      display: flex
+    &:hover .next-tip::before
+      display: block
+    &-tip
+      position: absolute
+      display: none
+      justify-content: center
+      align-items: center
+      top: -36px
+      left: -5px
+      width: 25px
+      height: 25px
+      border: 1px solid $UIelements-color
+      border-radius: 10px
+      font-size: 16px
+      color: lighten($text-color, 15%)
+      background-color: $UIelements-color
+      transition: all 0.5s
+      &::before
+        content: ""
+        position: absolute
+        display: none
+        left: 0px
+        top: 68%
+        width: 0
+        height: 0
+        border-right: 12px solid transparent
+        border-top: 15px solid $UIelements-color
+        border-left: 12px solid transparent
+        transition: all 0.5s
+        z-index: -1
+.button
+  justify-content: center
+  -ms-align-items: center
+  align-items: center
+  margin-right: 10px
+  padding: 0
+  border-radius: 50%
+  width: 20px
+  height: 20px
+  outline: none
+  border: 1px solid $text-color
+  font-size: 12px
+  font-weight: 700
+  color: $text-color
+  background-color: $button-color
+  transition: all 0.3s
+  -webkit-tap-highlight-color: transparent
+  &:focus
+    outline: 0
+  &:hover
+    background-color: darken($button-color, 20%)
+.fas
+  color: $card-color
+.fa-user,
+.fa-calendar-alt,
+.fa-eye
+  margin-right: 5px
+  font-size: 12px
+.smooth
+  transition: transform  calc(var(--factor, 1)*.4s) ease-out
+
+@import './media-queries'
+
